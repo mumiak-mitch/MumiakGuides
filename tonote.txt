@@ -1,2 +1,0 @@
-Check on the google analytics functionality
-Check on the report functionality
