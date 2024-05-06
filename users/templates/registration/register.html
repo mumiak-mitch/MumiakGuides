@@ -1,0 +1,45 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+{% block title %} Register {% endblock %}
+{% block content %}
+<br>
+<div class="container mt-4">
+    <div class="card mx-auto" style="width: 90%; max-width: 45rem; padding: 10px; background-color: #f8f9fa; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h1 class="text-center mt-5">Register</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% if field.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in field.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+                <p class="mt-4 text-center">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+                <p class="mt-4 text-center">Go to <a href="{% url 'home' %}">Home</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}

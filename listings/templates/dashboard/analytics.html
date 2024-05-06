@@ -1,0 +1,92 @@
+<!--Analytics template-->
+{% extends 'sidebar.html' %}
+{% load google_analytics_tags %}
+
+{% block title %} Analytics {% endblock %}
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <!--Heading-->
+    <h1 class="text-center">Analytics</h1>
+
+    <!--Charts with user analytics, configuration not complete-->
+    <div style="display:none">
+        <img src="{% google_analytics %}" width="0" height="0" />
+    </div>
+
+    <div class="row mt-4">
+        <!--User Engagement Chart-->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    User Engagement:
+                </div>
+                <div class="card-body">
+                    <canvas id="userEngagementChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        <!--Others-->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Others:
+                </div>
+                <div class="card-body">
+                    <p>Total Towns: {{ total_towns }}</p>
+                    <p>Total Categories: {{ total_categories }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Prepare data from Django template
+    var total_events = {{ total_events }};
+    var total_listings = {{ total_listings }};
+    var total_users = {{ total_users }};
+    
+    // Create User Engagement Chart
+    var ctx = document.getElementById('userEngagementChart').getContext('2d');
+    var userEngagementChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Total Events', 'Total Directories', 'Total User Profiles'],
+            datasets: [{
+                label: 'User Engagement Metrics',
+                data: [total_events, total_listings, total_users],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+{% else %}
+<div class="container">
+    <h5>Please login to access this page</h5>
+</div>
+{% endif %}
+
+{% endblock %}

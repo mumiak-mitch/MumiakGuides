@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} {{ specific_town }} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    {% if town_listings %}
+
+    <!--heading-->
+    <h1 class="text-center mt-5">Directories in {{ specific_town }}</h1>
+    <br>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        <!--Lists all the directories in a specific ward/town-->
+        {% for listing in town_listings %}
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'listing' listing.pk %}">{{ listing.name }}</a></h5>
+                    <p class="card-text">
+                        Owner: {{ listing.owner.first_name }} {{ listing.owner.last_name }}<br>
+                        Town: {{ listing.town }}<br>
+                        Created on: {{ listing.date }} <br>
+                        {{ listing.snippet}}
+                    </p>
+                    <a href="{% url 'listing' listing.pk %}" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+    <!--It is shown when the town does not exist/if the town/ward does not have any directories yet-->
+    <h4 class="text-center mt-5">Thank you for visiting this page.</h4>
+    <p class="text-center">You are currently seeing this page because:</p>
+    <p class="text-center">The town has not been added or does not exist in Vihiga or the directory has not been added
+        or does not exist in Vihiga</p>
+    {% endif %}
+</div>
+
+{% endblock %}

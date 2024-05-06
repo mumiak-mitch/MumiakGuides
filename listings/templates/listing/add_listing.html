@@ -1,0 +1,52 @@
+<!--Form for adding directories-->
+{% extends 'sidebar.html' %}
+{% block title %} Create Directory {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class=" mt-4">
+    <h1 class="text-center">Create Directory</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!--form-->
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            
+                {{ form.media }}
+                {{ form.as_p }}
+            
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+
+            <!--error handling-->
+            {% if form.errors %}
+                <div class="alert alert-danger mt-3">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <br>
+        </div>
+    </div>
+</div>
+
+<!--Script for associating the created directory with the owner-->
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("founder").value = name;
+</script>
+
+{% else %}
+<div class="container">
+    <h5 class="text-center">Please login to access this page</h5>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} MumiakGuides | Directory {% endblock%}
+
+{% block content %}
+<!--Heading-->
+<h2 class="text-center mt-4">Directories</h2>
+
+<!--Search functionalities-->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a href="{% url 'home' %}" class="nav-link active">Directory</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'event_list' %}" class="nav-link" style="color: grey;">Events</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto align-items-center">
+        {% if cat_menu %}
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="{% url 'home' %}" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu">
+            {% for item in cat_menu %}
+            <li><a class="dropdown-item" href="{% url 'industry' specific_industry=item %}">{{ item }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+
+        <li class="nav-item">
+          <form class="d-flex" role="search" method="GET" action="{% url 'home' %}">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Lists all directories as cards -->
+<div class="container mt-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    {% for listing in object_list %}
+    <div class="col">
+      <div class="card shadow bg-light">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            {% if listing.dir_logo %}
+            <img src="{{ listing.dir_logo.url }}" alt="{{ listing.name }} Logo" style="max-width: 50px;">
+            {% else %}
+            <img src="{% static 'images/alt_logo.png' %}" alt="Alternative logo" style="max-width: 50px;">
+            {% endif %}
+            <h5 class="card-title"><a href="{% url 'listing' listing.pk %}">{{ listing.name }}</a></h5>
+          </div>
+          <p class="card-text">
+            {% if listing.founder %}
+            Founder: {{ listing.founder }} <br>
+            {% else %}
+            Founder: Mitchel Mugono <br>
+            {% endif %}
+            Town: <a href="{% url 'town' listing.town %}">{{ listing.town }}</a><br>
+            Created on: {{ listing.date }} <br>
+            Industry: {{ listing.industry }} <br>
+            {{ listing.snippet }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <!-- Shows up if directory does not exist -->
+    {% if object_list|length == 0 %}
+    <div class="col">
+      <p>No results found.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

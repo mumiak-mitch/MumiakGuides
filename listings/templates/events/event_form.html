@@ -1,0 +1,127 @@
+<!--Event form for creating and editing events-->
+{% extends 'sidebar.html' %}
+{% block title %} Create Event {% endblock %}
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container mt-4">
+    <h1 class="text-center">{% if edit %}Edit Event{% else %}Create New Event{% endif %}</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!--Create or Edit form-->
+            <!--mutlipart enables it to accept media-->
+            <form method="post" enctype="multipart/form-data">
+
+                <!--Accomodates forms and media-->
+                {% csrf_token %}
+                {{ form.media }}
+
+                <!--Field for event name-->
+                <div class="mb-3">
+                    <label for="id_event_name" class="form-label">Name of the Event </label>
+                    <input type="text" class="form-control" id="id_event_name" name="event_name"
+                        value="{{ form.event_name.value }}">
+                </div>
+
+                <!--Field for event logo-->
+                <div class="mb-3">
+                    <label for="id_event_logo" class="form-label">Logo for Organizers </label>
+                    <input type="file" class="form-control" id="id_event_logo" name="event_logo">
+                </div>
+
+                <!--Field for organizers-->
+                <div class="mb-3">
+                    <label for="id_organizer_name" class="form-label"> Event Organizers </label>
+                    <input type="text" class="form-control" id="id_organizer_name" name="organizer_name"
+                        value="{{ form.organizer_name.value }}">
+                </div>
+
+                <!--Field for event image-->
+                <div class="mb-3">
+                    <label for="id_event_image" class="form-label">Image of the Event </label>
+                    <input type="file" class="form-control" id="id_event_image" name="event_image">
+                </div>
+
+                <!--Field for event date-->
+                <div class="mb-3">
+                    <label for="id_event_date" class="form-label">Event Date </label>
+                    <input type="date" class="form-control" id="id_event_date" name="event_date"
+                        value="{{ form.event_date.value }}">
+                </div>
+
+                <!--Select functionality for the ward/town-->
+                <div class="mb-3">
+                    <label for="id_town" class="form-label">Town</label>
+                    <select class="form-select" id="id_town" name="town">
+                        {% for value, label in form.town.field.choices %}
+                        <option value="{{ value }}" {% if form.town.value == value %}selected{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!--Field for the venue-->
+                <div class="mb-3">
+                    <label for="id_venue" class="form-label">Venue </label>
+                    <input type="text" class="form-control" id="id_venue" name="venue" value="{{ form.venue.value }}">
+                </div>
+
+                <!--Field for regitration fee-->
+                <div class="mb-3">
+                    <label for="id_fee" class="form-label">Registration Fee </label>
+                    <input type="number" min="0" class="form-control" id="id_fee" name="fee"
+                        value="{{ form.fee.value }}">
+                </div>
+
+                <!--Field for the registration form-->
+                <div class="mb-3">
+                    <label for="id_registration_link" class="form-label">Registration Link</label>
+                    <input type="url" class="form-control" id="id_registration_link" name="registration_link"
+                        value="{{ form.registration_link.value }}" placeholder="Optional">
+                </div>
+
+                <!--Field for the number of maximum participants-->
+                <div class="mb-3">
+                    <label for="id_max_participants" class="form-label">Maximum Participants </label>
+                    <input type="number" min="0" class="form-control" id="id_max_participants" name="max_participants"
+                        value="{{ form.max_participants.value }}">
+                </div>
+
+                <!--Field for the description of the event-->
+                <div class="mb-3">
+                    <label for="id_event_description" class="form-label">More Information </label>
+                    {{ form.event_description }}
+                </div>
+
+                <!--Submit button-->
+                <button type="submit" class="btn btn-primary btn-block mt-4">{% if edit %}Save Changes{% else %}Create
+                    Event{% endif %}</button>
+
+
+                <!-- Display form errors -->
+                {% if form.errors %}
+                <div class="alert alert-danger mt-3">
+                    <ul>
+                        {% for field in form %}
+                        {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+{% else %}
+<!--If user is not logged in, this shows up-->
+<div class="container">
+    <h5 class="text-center">Please login to access this page</h5>
+</div>
+{% endif %}
+
+{% endblock %}

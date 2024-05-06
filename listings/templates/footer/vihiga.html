@@ -1,0 +1,192 @@
+<!--Vihiga county templates-->
+{% extends 'base.html' %}
+{% block title %} Vihiga County {% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1 class="text-center">Vihiga</h1>
+
+    <section id="geography" class="mt-4">
+        <h2>Geography</h2>
+        <p>
+            Vihiga County is situated in the western part of Kenya. It shares borders with Kakamega, Kisumu, Nandi,
+            Siaya.
+            The county covers an area of 563 km <sup>2</sup> square kilometers and has a diverse geographical landscape,
+            including hills, forests, and rivers.
+        </p>
+    </section>
+
+    <!--Map for Vihiga county-->
+    <div class="container">
+        <div id="map" class="col-md-8 offset-md-2"></div>
+    </div>
+
+    <section id="population" class="mt-4">
+        <h2>Population</h2>
+        <p>
+            With a total population of 590,013, Vihiga County has a mix of urban and rural areas. The population
+            density is 1,046/km <sup>2</sup> people per square kilometer.
+        </p>
+    </section>
+
+    <section id="administration" class="mt-4">
+        <h2>Administrative Details</h2>
+        <p>
+            The administrative headquarters of Vihiga County is Mbale. The county is divided into 5 sub-counties,
+            including Emuhaya, Vihiga, Sabatia, Hamisi,
+            Luanda. The current county leadership is headed by H.E. Dr Wilber K. Ottichilo.
+        </p>
+    </section>
+
+    <section id="economy" class="mt-4">
+        <h2>Economy</h2>
+        <p>
+            Vihiga County's economy is primarily driven by Crop and Livestock, including agriculture,
+            industry, and services. The county is known for Tea and Coffee. Key industries and
+            businesses contributing to the economy include Cottage Industries, Subsistence Farming,
+            Tea Farming, Horticulture, Livestock Farming, Wholesale and Retail Trade, Quarrying and Mining.
+        </p>
+    </section>
+
+    <section id="infrastructure" class="mt-4">
+        <h2>Infrastructure</h2>
+        <p>
+            The county has a well-developed infrastructure, including Chavakali-Kapsabet road.
+            Healthcare facilities and educational institutions such as Sabatia Eye Hospital, Kaimosi Friends University
+            , Friends College Kaimosi, Kaimosi TTC among many others are available in the region.
+        </p>
+    </section>
+
+    <section id="culture" class="mt-4">
+        <h2>Cultural and Historical Aspects</h2>
+        <p>
+            Vihiga County has a rich cultural heritage influenced by various ethnic groups. Traditional ceremonies
+            and events are an integral part of the county's identity.
+        </p>
+    </section>
+
+    <section id="tourism" class="mt-4">
+        <h2>Tourism</h2>
+        <p>
+            Tourists visiting Vihiga County can explore its beautiful landscapes, including hills, forests, and
+            rivers. Cultural sites, local cuisine, and various outdoor activities make it an attractive destination.
+        </p>
+    </section>
+
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">Vihiga Constituencies</h1>
+
+        <div class="row">
+            <!-- First Row with Three Constituencies -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Hamisi</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="map_hamisi" style="height: 200px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Vihiga</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="map_vihiga" style="height: 200px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Luanda</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="map_luanda" style="height: 200px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Row with Two Constituencies -->
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Sabatia</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="map_sabatia" style="height: 200px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Emuhaya</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="map_emuhaya" style="height: 200px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add JavaScript to initialize maps for each constituency -->
+<script>
+    // Initialize maps for each constituency
+    var hamisiMap = L.map('map_hamisi').setView([0.0375, 34.7297], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(hamisiMap);
+
+    var vihigaMap = L.map('map_vihiga').setView([0.0461, 34.7003], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(vihigaMap);
+
+    var luandaMap = L.map('map_luanda').setView([0.0577, 34.7915], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(luandaMap);
+
+    var sabatiaMap = L.map('map_sabatia').setView([0.0433, 34.6815], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(sabatiaMap);
+
+    var emuhayaMap = L.map('map_emuhaya').setView([0.0205, 34.6992], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(emuhayaMap);
+</script>
+
+<p>For more detailed information, please visit the <a href="https://vihiga.go.ke/" target="_blank">Vihiga County
+        Website</a>.</p>
+
+</div>
+
+
+<script>
+    // Code for embedding the map of Vihiga
+    // Initialize Leaflet map
+    var map = L.map('map').setView([0.0469, 34.7306], 10); // Set the initial view and zoom level
+
+    // Add a tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add a marker
+    var marker = L.marker([0.0469, 34.7306]).addTo(map);
+</script>
+
+{% endblock %}

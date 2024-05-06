@@ -1,0 +1,20 @@
+<!--The list for the town-->
+{% extends 'base.html' %}
+{% block title %} Town List {% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Towns</h1>
+
+    <!--Lists all the towns/wards-->
+    <ul class="list-group">
+        {% for item in town_menulist %}
+        <li class="list-group-item">
+            <a class="text-decoration-none" href="{% url 'town' item %}">{{ item }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
