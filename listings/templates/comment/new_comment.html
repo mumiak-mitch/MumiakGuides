@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <!-- Add comment form -->
 <div class="container mt-4">
     <h1 class="text-center">Add Comment</h1>
@@ -25,31 +26,4 @@
     </div>
 </div>
 
-<script>
-    document.getElementById('commentForm').addEventListener('submit', function(event) {
-        // Get form elements
-        var commentName = document.getElementById('id_comment_name').value;
-        var body = document.getElementById('id_body').value;
-
-        // Initialize validation flag
-        var isValid = true;
-
-        // Check if comment name field is empty
-        if (commentName.trim() === '') {
-            isValid = false;
-            alert('Your name field is required');
-        }
-
-        // Check if comment body field is empty
-        if (body.trim() === '') {
-            isValid = false;
-            alert('Your comment field is required');
-        }
-
-        // Prevent form submission if validation fails
-        if (!isValid) {
-            event.preventDefault();
-        }
-    });
-</script>
 {% endblock %}

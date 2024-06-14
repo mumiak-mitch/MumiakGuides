@@ -12,11 +12,6 @@
     <!--Heading-->
     <h1 class="text-center">Analytics</h1>
 
-    <!--Charts with user analytics, configuration not complete-->
-    <div style="display:none">
-        <img src="{% google_analytics %}" width="0" height="0" />
-    </div>
-
     <div class="row mt-4">
         <!--User Engagement Chart-->
         <div class="col-md-6">
@@ -50,7 +45,7 @@
     var total_events = {{ total_events }};
     var total_listings = {{ total_listings }};
     var total_users = {{ total_users }};
-    
+
     // Create User Engagement Chart
     var ctx = document.getElementById('userEngagementChart').getContext('2d');
     var userEngagementChart = new Chart(ctx, {
