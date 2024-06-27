@@ -8,4 +8,6 @@ HTML
 
 CSS, Bootstrap
 
+JavaScript
+
 Python, Django
