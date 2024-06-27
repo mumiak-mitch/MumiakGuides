@@ -1,0 +1,112 @@
+<!--The list for the town-->
+{% extends 'base.html' %}
+{% block title %} FAQs {% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1 class="text-center">Frequently Asked Questions</h1>
+
+    <div class="accordion mt-4" id="accordionExample">
+        <!-- Question 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Do I need a shop to create my profile?
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>No.</strong> You do not need a physical shop to create your profile. Whether you operate
+                    from a shop, open air market or offer services from home, you can still list your business or event on our directory.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    How can I add my business/event to the directory?
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>To add your business or event:</strong> Visit our website and navigate to the "Create Directory"/"Create Event"
+                    page in your dashboard. Fill out the required information accurately, including your business name, contact details,
+                    location, and a brief description.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    How much does it cost to list my business/event?
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Listing your business or event on our directory is free of charge.</strong> We aim to
+                    support local businesses and event organizers by providing a platform to showcase their offerings
+                    without any cost. However, we may offer premium features or advertising options in the future for
+                    those seeking additional visibility.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Can I edit my business/event information after it's been submitted?
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Yes, you can edit your listing at any time.</strong> Simply log in to your account and
+                    navigate to your dashboard. From there, you can make changes to your business or event information,
+                    including updating contact details, descriptions, and images.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    How long does it take for my listing to appear on the directory?
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Your listing will typically appear after you submit it.</strong> In the near future our
+                    team will review each submission to ensure accuracy and appropriateness before it goes live.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    How can I delete my account?
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Please</strong> do write to us and we will be able to assist you effectively.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

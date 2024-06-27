@@ -1,0 +1,34 @@
+<!--Edit profile template-->
+{% extends 'sidebar.html' %}
+{% block title %} Edit Profile {% endblock %}
+
+{% block content %}
+
+<!--User can edit their profile details-->
+{% if user.is_authenticated %}
+{% if user.id == userprofile.user.id %}
+<div class="container mt-4">
+    <h1 class="text-center">Edit Profile</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary">Save Details</button>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% else %}
+<div class="container">
+    <h5 class="text-center">Please login to access this page</h5>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,72 @@
+<!--Dashboard template-->
+{% extends 'sidebar.html' %}
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <!-- Quick Links -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quick Links</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="{% url 'user_listings' %}">View Directories</a></li>
+                        <li class="list-group-item"><a href="{% url 'add_listing' %}">Create Directory</a></li>
+                        <li class="list-group-item"><a href="{% url 'user_events' %}">View Events</a></li>
+                        <li class="list-group-item"><a href="{% url 'event_create' %}">Create Events</a></li>
+
+                        <li class="list-group-item"><a href="{% url 'home' %}">Go back to Original Site</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Additional Resources</h5>
+
+                    <p>1. The Kenya National Innovation Agency <a href="https://www.knia.go.ke/" target="_blank">Link</a> - The Kenya National Innovation
+                    Agency is a government agency that supports the development of innovation and entrepreneurship in
+                    Kenya. It offers funding opportunities, business incubation, and access to research and development
+                    resources.</p>
+
+                    <p>2. The Kenya Association of Manufacturers <a href="https://kam.co.ke/" target="_blank">Link</a> - The Kenya Association of
+                    Manufacturers is a non-profit organization that represents the interests of manufacturers in Kenya.
+                    It offers resources and support for entrepreneurs and businesses, including training programs,
+                    policy advocacy, and access to industry networks.</p>
+
+                    <p>3. The African Entrepreneurship Award <a href="https://africanentrepreneurshipaward.com/" target="_blank">Link</a> - The African
+                    Entrepreneurship Award is an international platform that offers funding, mentorship, and support to
+                    entrepreneurs across Africa. It includes a network of business experts and mentors who can provide
+                    guidance and support to entrepreneurs.</p>
+
+                    <p>4. The iBiz Africa Incubation Centre <a href="https://ibizafrica.co.ke/" target="_blank">Link</a> - The iBiz Africa Incubation Centre
+                    is a business incubator located at Strathmore University in Nairobi. It offers resources and support
+                    for early-stage entrepreneurs, including mentorship, training, and access to funding opportunities.</p>
+
+                    <p>5. The Kenya Climate Innovation Center <a href="https://kenyacic.org/" target="_blank">Link</a> - The Kenya Climate Innovation Center
+                    is a business incubator that supports the development of innovative solutions to climate change in
+                    Kenya. It offers resources and support for entrepreneurs in the clean energy, agriculture, and water
+                    sectors.</p>
+
+                    <p>6. The Tony Elumelu Foundation <a href="https://www.tonyelumelufoundation.org/" target="_blank">Link</a> - The Tony Elumelu
+                    Foundation is an international platform that offers funding, mentorship, and support to African
+                    entrepreneurs. It includes a network of mentors, experts, and investors who can provide guidance and
+                    support to entrepreneurs.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <h5 class="text-center">Please login to access this page</h5>
+</div>
+{% endif %}
+
+{% endblock %}

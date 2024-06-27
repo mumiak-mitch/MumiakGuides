@@ -1,0 +1,93 @@
+<!--About template for the website and the owners-->
+{% extends 'base.html' %}
+{% block title %} About Us {% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <!--About MumiakGuides-->
+    <section id="overview" class="mt-5">
+        <h1 class="text-center mb-4">About MumiakGuides</h1>
+        <p>
+            Welcome to MumiakGuides, your platform for empowering small businesses to flourish and achieve greatness. At
+            MumiakGuides, we are committed to spotlighting the unique stories and offerings of small businesses, making
+            it seamless for them to gain visibility and impact.
+        </p>
+        <p>
+            Our mission is to create a supportive ecosystem where small businesses not only survive but thrive. Through
+            innovative guides, insightful content, and dedicated efforts, we aim to be the catalyst for their growth,
+            helping them break barriers and leave a lasting impression in their respective industries.
+        </p>
+    </section>
+
+    <!--History of MumiakGuides-->
+    <section id="history" class="mt-5">
+        <h2 class="text-center mb-4">Our History</h2>
+        <p>
+            MumiakGuides is the brainchild of a visionary fourth-year project led by Mitchel Mugono, a passionate and
+            driven individual dedicated to making a positive impact. The project addresses a crucial need in the
+            business landscape — the empowerment of small businesses.
+        </p>
+        <p>
+            From its inception, MumiakGuides is evolving into a platform committed to showcasing the journey and
+            achievements of small businesses. Mitchel's vision is to create a space where entrepreneurs can tell their
+            stories, connect with a broader audience, and receive the recognition they deserve.
+        </p>
+        <p>
+            As of now, MumiakGuides is on the path to becoming a community-driven initiative, aiming to foster
+            collaboration and provide valuable resources for small business owners. Our journey is anticipated to be
+            marked by the success stories of those we will support, and we look forward to being inspired by the
+            resilience and innovation of the small business community.
+        </p>
+    </section>
+
+    <!--The team involved-->
+    <section id="team" class="mt-5">
+        <h2>The Team</h2>
+
+        <div class="card w-25">
+            <img src="{% static 'images/profile.png' %}" class="card-img-top" alt="Founder">
+            <div class="card-body">
+                <h5 class="card-title">Mitchel M.</h5>
+                <p class="card-text">Founder & CEO</p>
+                <p class="card-text">Software Engineer</p>
+            </div>
+        </div>
+    </section>
+
+    <!--Our core principles/values-->
+    <section id="values" class="mt-5">
+        <h2>Our Core Principles</h2>
+        <p>At our core, we are guided by the following values:</p>
+        <ul>
+            <li><strong>Accessibility:</strong> We are committed to making our services and opportunities accessible to
+                everyone, ensuring inclusivity and equal participation.</li>
+            <li><strong>Bringing Opportunities Within Reach:</strong> We strive to bridge gaps and bring valuable
+                opportunities closer to individuals, fostering growth and development.</li>
+            <li><strong>Closing the Gap in Digital Divide:</strong> Our mission includes actively working towards
+                reducing disparities in digital access, contributing to a more connected and equitable society.</li>
+        </ul>
+    </section>
+
+    <!--contact us section-->
+    <section id="contact" class="mt-5">
+        <h2 class="text-center mb-4">Contact Us</h2>
+
+        <div class="contact-info">
+            <p class="lead">
+                We'd love to hear from you! Feel free to reach out to us through the following channels:
+            </p>
+            <ul class="list-unstyled">
+                <li><strong>Email:</strong> <a
+                        href="mailto:mumiaktechnologies@gmail.com">mumiaktechnologies@gmail.com</a></li>
+                <li><strong>Phone:</strong> <a href="tel:+254111111111">+254111111111</a></li>
+                <li><strong>Address:</strong> Cheptulu, Vihiga. Kenya.</li>
+            </ul>
+            <p>If you would like to contribute, please feel free to reach out to us.</p>
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}

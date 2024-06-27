@@ -1,0 +1,37 @@
+<!--Directory update form-->
+{% extends 'sidebar.html' %}
+{% block title %} Update Directory {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{% if user.id == listing.owner.id %}
+<div class="container mt-4">
+    <!--Heading-->
+    <h1 class="text-center">Update Listing</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <!--Form for updation-->
+            <form action="" method="post" enctype="multipart/form-data">
+                <!--enhances functionality for the form and media-->
+                {% csrf_token %}
+                {{ form.media }}
+
+                <!--the form-->
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% else %}
+<div class="container">
+    <h5 class="text-center">Please login to access this page</h5>
+</div>
+{% endif %}
+
+{% endblock %}

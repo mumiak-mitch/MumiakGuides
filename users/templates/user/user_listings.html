@@ -1,0 +1,35 @@
+<!--lisings/diretory template for the user logged in-->
+{% extends 'sidebar.html' %}
+
+{% block title %} Your Directories {% endblock %}
+
+{% block content %}
+
+<h2 class="text-center">Your Directories</h2>
+
+{% if listings %}
+<ul>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        {% for listing in listings %}
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'listing' listing.pk %}">{{ listing.name }}</a></h5>
+                    <p class="card-text">
+                        Owner: {{ listing.owner.first_name }} {{ listing.owner.last_name }}<br>
+                        Town: <a href="{% url 'town' listing.town %}">{{ listing.town }}</a><br>
+                        Category: {{ listing.industry }}
+                        Created on: {{ listing.date }} <br>
+                        {{ listing.snippet }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</ul>
+{% else %}
+<p class="text-center">You haven't created any directories yet.</p>
+{% endif %}
+
+{% endblock %}

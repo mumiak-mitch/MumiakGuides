@@ -1,0 +1,40 @@
+<!--Category/Industry template-->
+{% extends 'base.html' %}
+{% block title %} {{ specific_industry }} {% endblock %}
+
+{% block content %}
+
+<!--Categorizes directories according to their categories-->
+{% if spec_industry %}
+<div class="container">
+    <h1 class="text-center mt-5">Category: {{ specific_industry }}</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mt-2">
+        {% for listing in spec_industry %}
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'listing' listing.pk %}">{{ listing.name }}</a></h5>
+                    <p class="card-text">
+                        Owner: {{ listing.owner.first_name }} {{ listing.owner.last_name }}<br>
+                        Town: {{ listing.town }}<br>
+                        Created on: {{ listing.date }} <br>
+                        {{ listing.snippet }}
+                    </p>
+                    <a href="{% url 'listing' listing.pk %}" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<!--Shows up when the category or directories in a specific category dont exit-->
+<div class="container mt-5">
+    <h4 class="text-center">Thank you for visiting this page.</h4>
+    <p class="text-center">You are currently seeing this page because:</p>
+    <p class="text-center">The category has not been added or there is no directory under this category.</p>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,33 @@
+<!--Template for deleting directory-->
+{% extends 'sidebar.html' %}
+{% block title %} Delete Directory {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{% if user.id == listing.owner.id %}
+<div class="container mt-4">
+    <h1 class="text-center">Delete {{ listing.name }}</h1>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <!--Form for deleting a directory-->
+            <form action="" method="post">
+                {% csrf_token %}
+
+                <strong>Are you sure?</strong><br>
+
+                <button type="submit" class="btn btn-danger">Remove</button>
+                <a href="{% url 'home' %}" class="btn btn-primary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% else %}
+<div class="container">
+    <h5 class="text-center">Please login to access this page</h5>
+</div>
+{% endif %}
+
+{% endblock %}

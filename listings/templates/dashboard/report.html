@@ -1,0 +1,58 @@
+<!--Report template-->
+{% extends 'sidebar.html' %}
+{% block title %} Reports {% endblock %}
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <!--Heading-->
+    <h1 class="text-center">Reports</h1>
+    
+    <!-- Filter options:date -->
+    <form method="GET" class="mt-5">
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date">
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date">
+        <button type="submit" class="btn btn-primary">Apply Filter</button>
+    </form>
+    
+    <!-- Report data visualization:configuration not complete -->
+    <div id="report-chart"></div>
+    
+    <!-- Summary statistics -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Total Directories
+                </div>
+                <div class="card-body">
+                    <p>{{ total_directories }}</p>
+                    <p>Dates they were created</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Total Events
+                </div>
+                <div class="card-body">
+                    <p>{{ total_events }}</p>
+                    <p>Dates they will occur</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <h5>Please login to access this page.</h5>
+</div>
+{% endif %}
+
+{% endblock %}
